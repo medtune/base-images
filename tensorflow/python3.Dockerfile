@@ -1,5 +1,3 @@
-from tensorflow/tensorflow:nightly-py3  
-
-RUN mkdir /medtune
+FROM tensorflow/tensorflow:nightly-py3  
 
 WORKDIR /medtune
