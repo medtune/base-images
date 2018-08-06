@@ -25,6 +25,7 @@ ADD tensorflow_serving /root/go/src/tensorflow_serving
 
 WORKDIR /root/go/src/github.com/medtune
 
-RUN git clone -b dev-1 https://github.com/medtune/beta-platform
+RUN git clone -b dev https://github.com/medtune/beta-platform
 RUN go get -u -v -d ./beta-platform/... 
 RUN go build -o medtune-platform beta-platform/cmd/main.go
+
