@@ -1,0 +1,43 @@
+version: 2
+jobs:
+  tf-go:
+    machine: true
+    steps:
+      - checkout                    
+      - run:
+          name: tensorflow go
+          command: |
+            make tensorflow-go
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push medtune/tensorflow:1.3-go1.9
+
+  tf-go-gpu:
+    machine: true
+    steps:
+      - checkout                
+      - run:
+          name: push image
+          command: |
+            make tensorflow-go-gpu
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push medtune/tensorflow:1.3-go1.9-gpu
+
+  tf-client-go:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: push image
+          command: |
+            make tensorflow-client-go
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push medtune/tensorflow:1.3-go1.9-gpu
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - tf-go
+      - tf-go-gpu
+      - tf-client-go
+    
