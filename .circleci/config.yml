@@ -31,7 +31,16 @@ jobs:
           command: |
             make tensorflow-client-go
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker push medtune/tensorflow:1.3-go1.9-gpu
+            docker push medtune/tensorflow:serving-client-go
+
+  tf-go-1.13-1.11:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: push image
+          command: |
+            echo TODO
 
 workflows:
   version: 2

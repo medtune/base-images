@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow
+FROM tensorflow/tensorflow:1.12.0-gpu
 
 #Begin: install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends git
@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
   && rm -rf /var/lib/apt/lists/*
 
-ENV GOLANG_VERSION 1.9.1
+ENV GOLANG_VERSION 1.11
 RUN set -eux; \
   \
   dpkgArch="$(dpkg --print-architecture)"; \
